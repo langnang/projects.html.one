@@ -1,0 +1,114 @@
+{
+  "oneexam": {
+    "contents": [
+      {
+        "id": "1794082872233_bvznm",
+        "name": "题库模板.xlsx",
+        "questions": [
+          {
+            "question": "中国的首都是哪里？",
+            "options": [
+              {
+                "key": "A",
+                "text": "北京"
+              },
+              {
+                "key": "B",
+                "text": "上海"
+              },
+              {
+                "key": "C",
+                "text": "广州"
+              },
+              {
+                "key": "D",
+                "text": "深圳"
+              }
+            ],
+            "answer": "A",
+            "rawAnswer": "A",
+            "type": "single",
+            "explanation": "北京是首都"
+          },
+          {
+            "question": "下列哪些是水果？",
+            "options": [
+              {
+                "key": "A",
+                "text": "苹果"
+              },
+              {
+                "key": "B",
+                "text": "胡萝卜"
+              },
+              {
+                "key": "C",
+                "text": "香蕉"
+              },
+              {
+                "key": "D",
+                "text": "土豆"
+              },
+              {
+                "key": "E",
+                "text": "橙子"
+              },
+              {
+                "key": "F",
+                "text": "西瓜"
+              }
+            ],
+            "answer": "ABCE",
+            "rawAnswer": "ABCE",
+            "type": "multiple",
+            "explanation": "胡萝卜和土豆不是水果"
+          },
+          {
+            "question": "地球是一个球体。",
+            "options": [],
+            "answer": "正确",
+            "rawAnswer": "正确",
+            "type": "judge",
+            "explanation": "常识题"
+          },
+          {
+            "question": "《静夜思》的作者是____。",
+            "options": [],
+            "answer": "李白",
+            "rawAnswer": "李白",
+            "type": "fill",
+            "explanation": "唐代诗人"
+          }
+        ],
+        "count": 4,
+        "date": "2026-11-08 04:21",
+        "colMap": {
+          "q": 0,
+          "ans": 7,
+          "exp": 9,
+          "type": 8,
+          "opts": {
+            "A": 1,
+            "B": 2,
+            "C": 3,
+            "D": 4,
+            "E": 5,
+            "F": 6
+          }
+        },
+        "headers": [
+          "题目",
+          "选项A",
+          "选项B",
+          "选项C",
+          "选项D",
+          "选项E",
+          "选项F",
+          "答案",
+          "题型",
+          "解析"
+        ]
+      }
+    ]
+  }
+}

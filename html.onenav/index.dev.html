@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+  <title>OneNav</title>
+  <link rel="stylesheet" merge="true" href="./css/hemanruc.OmniPage.css">
+</head>
+
+<body>
+  <div id="app"></div>
+  <script src="https://unpkg.com/create-dom@1.0.0/index.js"></script>
+  <script type="module">
+    import { dom_to_json } from "./../../packages.node.scripts/src/js/dom_to_json.js";
+    console.log(dom_to_json);
+
+
+    window.dom_to_json = dom_to_json;
+  </script>
+  <script src="./js/hemanruc.OmniPage.js" merge="true"></script>
+  <script src="./script.js" merge="true"></script>
+
+</body>
+
+</html>

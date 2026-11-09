@@ -1,0 +1,143 @@
+{
+  "name": "langnang/packages.node.onenav",
+  "title": "OneNav",
+  "onenav": {
+    "el": "#app",
+    "editable": false,
+    "styles": {},
+    "scripts": {},
+    "metas": {
+      "useful": {
+        "id": "useful",
+        "title": "常用网站",
+        "type": "category",
+        "children": {
+          "search": {
+            "id": "search",
+            "title": "搜索",
+            "type": "category",
+            "links": []
+          },
+          "nav": {
+            "id": "nav",
+            "title": "导航",
+            "type": "category",
+            "links": []
+          }
+        },
+        "contents": [],
+        "links": [],
+        "files": []
+      },
+      "journals": {
+        "id": "journals",
+        "title": "期刊官网",
+        "type": "category",
+        "contents": [],
+        "links": [
+          {
+            "name": "AMiner",
+            "url": "https://www.aminer.cn/",
+            "description": "学术搜索与分析",
+            "keywords": "示例"
+          }
+        ],
+        "files": []
+      },
+      "scholars": {
+        "id": "scholars",
+        "title": "关注学者",
+        "type": "category",
+        "contents": [],
+        "links": [],
+        "files": []
+      }
+    },
+    "contents": {},
+    "links": {
+      "AMiner": {
+        "name": "AMiner",
+        "url": "https://www.aminer.cn/",
+        "description": "学术搜索与分析",
+        "keywords": "示例"
+      },
+      "X-MOL": {
+        "name": "X-MOL",
+        "url": "https://www.x-mol.com/",
+        "description": "学术资讯平台",
+        "keywords": "示例"
+      },
+      "Nature": {
+        "name": "Nature",
+        "url": "https://www.nature.com/",
+        "description": "",
+        "keywords": ""
+      },
+      "Science": {
+        "name": "Science",
+        "url": "https://www.science.org/",
+        "description": "",
+        "keywords": ""
+      },
+      "World": {
+        "name": "World",
+        "url": "https://www.world.org/",
+        "description": "",
+        "keywords": ""
+      },
+      "张希": {
+        "name": "张希",
+        "url": "http://zhangxigroup.com/",
+        "description": "清华大学",
+        "keywords": "超分子"
+      },
+      "裴坚": {
+        "name": "裴坚",
+        "url": "http://www.chem.pku.edu.cn/pei/",
+        "description": "北京大学",
+        "keywords": "有机电子"
+      },
+      "鲍哲楠": {
+        "name": "鲍哲楠",
+        "url": "http://baogroup.stanford.edu/",
+        "description": "斯坦福大学",
+        "keywords": "柔性电子"
+      }
+    },
+    "files": {},
+    "relationships": [
+      {
+        "meta": "useful",
+        "link": "AMiner"
+      },
+      {
+        "meta": "useful",
+        "link": "X-MOL"
+      },
+      {
+        "meta": "journals",
+        "link": "Nature"
+      },
+      {
+        "meta": "journals",
+        "link": "Science"
+      },
+      {
+        "meta": "journals",
+        "link": "World"
+      },
+      {
+        "meta": "scholars",
+        "link": "张希"
+      },
+      {
+        "meta": "scholars",
+        "link": "裴坚"
+      },
+      {
+        "meta": "scholars",
+        "link": "鲍哲楠"
+      }
+    ]
+  }
+}

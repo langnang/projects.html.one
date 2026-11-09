@@ -1,0 +1,221 @@
+<!-- 左侧导航栏 -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-title">${this.title}</div>
+  <div id="navList"></div>
+  <div class="sidebar-bottom" id="sidebarBottom">
+    ${this.editable ? `<button class="btn btn-primary" id="btnEdit" onclick="toggleEdit()">编辑</button>
+    <button class="btn btn-success" id="btnSave" onclick="saveData()" style="display:none">保存</button>
+    <button class="btn btn-secondary" id="btnCancel" onclick="cancelEdit()" style="display:none">取消</button>
+    ` : ``}
+    <button class="btn btn-secondary" onclick="exportData()">导出</button>
+    <button class="btn btn-secondary" onclick="showImport()">导入</button>
+    <button class="btn btn-secondary" onclick="checkAllLinks()">检查链接</button>
+    <button class="btn btn-secondary" onclick="showGuide()" style="display:none">功能介绍</button>
+  </div>
+</nav>
+<button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()">☰</button>
+
+<div class="main-wrap">
+  <!-- 顶部日历 -->
+  <div class="calendar-bar" style="display: none;">
+    <div class="calendar-card" id="calendarDate"></div>
+  </div>
+
+  <!-- 融合搜索 -->
+  <div class="search-section">
+    <div class="search-box">
+      <input type="text" class="search-input" id="searchInput" placeholder="输入关键词搜索..."
+        onkeydown="if(event.key==='Enter')doSearch()">
+      <button class="search-btn" onclick="doSearch()">搜索</button>
+    </div>
+    <div class="search-engines" id="engineList">
+      <span class="engine-tag active" data-url="https://www.quark.cn/s/?q=">夸克</span>
+      <span class="engine-tag" data-url="https://cn.bing.com/search?q=">必应</span>
+      <span class="engine-tag" data-url="https://www.google.com.hk/search?q=">谷歌</span>
+      <span class="engine-tag" data-url="https://s.taobao.com/search?q=">淘宝</span>
+      <span class="engine-tag" data-url="https://search.jd.com/Search?keyword=">京东</span>
+    </div>
+  </div>
+
+  <!-- 分类与链接（由 JS 渲染） -->
+  <div class="container" id="mainContainer"></div>
+
+  <div id="mainFooter">
+    develop by <a target="_blank" href="https://github.com/langnang">langnang</a> fork from <a target="_blank"
+      href="https://github.com/hemanruc/OmniPage">hemanruc/OmniPage</a>
+  </div>
+
+  <div class="add-cat-bar" id="addCatBar">
+    <button class="btn btn-primary" onclick="addCategory()">添加新分类</button>
+  </div>
+
+  <!-- 功能介绍页 -->
+  <div class="guide-section" id="guideSection" style="display:none">
+    <div class="guide-header">
+      <div class="guide-icon">📖</div>
+      <h1>OmniPage 功能介绍</h1>
+      <p>您的个人导航主页使用指南</p>
+    </div>
+    <div class="guide-body">
+      <div class="guide-card">
+        <div class="guide-figure">
+          <div class="fig-bookmark">
+            <div class="fig-browser-bar">🌐 OmniPage</div>
+            <div class="fig-star">⭐ 已收藏</div>
+          </div>
+        </div>
+        <div class="guide-text">
+          <h3><span class="num">1</span>收藏本页为书签</h3>
+          <p>建议将本页添加为浏览器书签，方便随时访问：</p>
+          <ul>
+            <li><strong>Chrome / Edge</strong>：按 <kbd>Ctrl+D</kbd>（Windows）或 <kbd>Cmd+D</kbd>（Mac），选择书签栏保存</li>
+            <li><strong>Firefox</strong>：按 <kbd>Ctrl+D</kbd>，选择「书签工具栏」保存</li>
+            <li><strong>Safari</strong>：按 <kbd>Cmd+D</kbd>，选择「个人收藏夹」</li>
+          </ul>
+          <p>💡 <em>提示：您也可以将本页设为浏览器启动主页，每次打开浏览器即可直达。</em></p>
+        </div>
+      </div>
+
+      <div class="guide-card">
+        <div class="guide-figure">
+          <div class="fig-search">
+            <div class="fig-input"><span>🔍</span> 关键词</div>
+            <div class="fig-btns"><span class="fig-tag active">夸克</span><span class="fig-tag">必应</span></div>
+          </div>
+        </div>
+        <div class="guide-text">
+          <h3><span class="num">2</span>融合搜索</h3>
+          <p>页面顶部是<strong>融合搜索框</strong>，输入关键词后点击「搜索」即可跳转。</p>
+          <p>支持切换不同搜索引擎：夸克、必应、谷歌、淘宝、京东。点击标签即可切换默认引擎。</p>
+          <p>💡 <em>提示：按回车键可直接触发搜索。</em></p>
+        </div>
+      </div>
+
+      <div class="guide-card">
+        <div class="guide-figure">
+          <div class="fig-nav">
+            <div class="fig-nav-item active">常用网站</div>
+            <div class="fig-nav-item">期刊官网</div>
+            <div class="fig-nav-item">关注学者</div>
+          </div>
+        </div>
+        <div class="guide-text">
+          <h3><span class="num">3</span>分类导航</h3>
+          <p>左侧固定导航栏列出所有分类，点击即可<strong>平滑滚动</strong>到对应板块。</p>
+          <p>滚动页面时，左侧导航会自动高亮当前所在分类（滚动监听）。</p>
+          <p>每个分类标题前都有<strong>主题色竖条</strong>标识，简洁醒目，风格中性百搭。</p>
+        </div>
+      </div>
+
+      <div class="guide-card">
+        <div class="guide-figure">
+          <div class="fig-edit">
+            <div class="fig-card">
+              <div class="fig-line" style="width:60%"></div>
+              <div class="fig-line" style="width:40%"></div>
+            </div>
+            <div class="fig-drag" title="拖拽">↕️</div>
+          </div>
+        </div>
+        <div class="guide-text">
+          <h3><span class="num">4</span>编辑模式</h3>
+          <p>点击左侧「<strong>编辑</strong>」按钮进入编辑模式，此时：</p>
+          <ul>
+            <li>每个链接卡片变成可编辑表单，可直接修改<strong>名称、URL、备注、关键词</strong></li>
+            <li>拖拽链接卡片可<strong>调整同一分类内</strong>的顺序</li>
+            <li>点击 ↑ ↓ 箭头可<strong>调整分类顺序</strong></li>
+            <li>点击「➕ 添加链接」可在该分类下新增条目</li>
+            <li>点击「添加新分类」可创建全新板块</li>
+          </ul>
+          <p>✏️ 修改完成后，点击「<strong>保存</strong>」写入浏览器本地存储；点击「取消」放弃修改。</p>
+        </div>
+      </div>
+
+      <div class="guide-card">
+        <div class="guide-figure">
+          <div class="fig-io">
+            <div class="fig-box">📤 导出 JSON</div>
+            <div class="fig-arrow">↓</div>
+            <div class="fig-box">📁 本地文件</div>
+            <div class="fig-arrow">↓</div>
+            <div class="fig-box">📥 导入恢复</div>
+          </div>
+        </div>
+        <div class="guide-text">
+          <h3><span class="num">5</span>导入与导出</h3>
+          <p>数据完全保存在您本地，支持<strong>备份与迁移</strong>：</p>
+          <ul>
+            <li><strong>导出</strong>：生成 JSON 或 TXT 格式文件下载到电脑，建议定期备份</li>
+            <li><strong>导入</strong>：上传之前备份的 JSON 文件，或粘贴 JSON 文本，即可恢复全部数据</li>
+          </ul>
+          <p>🔒 <em>数据仅存储在浏览器 localStorage 中，不会上传到任何服务器。</em></p>
+        </div>
+      </div>
+
+      <div class="guide-card">
+        <div class="guide-figure">
+          <div class="fig-check">
+            <div class="fig-link">链接A <span class="fig-dot ok"></span></div>
+            <div class="fig-link">链接B <span class="fig-dot dead"></span></div>
+            <div class="fig-link">链接C <span class="fig-dot ok"></span></div>
+          </div>
+        </div>
+        <div class="guide-text">
+          <h3><span class="num">6</span>链接检查</h3>
+          <p>点击左侧「<strong>检查链接</strong>」按钮，系统会批量检测所有 URL 的可达性。</p>
+          <p>检测完成后，失效链接的卡片右上角会显示<strong>红色小圆点</strong>，方便您及时清理或更新。</p>
+          <p>⚠️ 注意：部分网站可能因反爬虫机制被误判，请结合实际情况判断。</p>
+        </div>
+      </div>
+
+      <div class="guide-card">
+        <div class="guide-figure">
+          <div class="fig-cal">
+            <div class="fig-cal-card">
+              <div class="fig-cal-date">2026年08月05日</div>
+              <div class="fig-cal-lunar">农历二〇二六年六月廿三</div>
+            </div>
+          </div>
+        </div>
+        <div class="guide-text">
+          <h3><span class="num">7</span>日历与农历</h3>
+          <p>页面顶部显示<strong>公历日期</strong>与<strong>农历日期</strong>，方便您快速查看今日信息。</p>
+        </div>
+      </div>
+
+      <div class="guide-footer">
+        <p>🎉 以上就是 OmniPage 的全部功能。点击左侧任意分类即可开始使用！</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 导入 / 导出弹窗 -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <div class="modal-header" id="modalTitle">导出数据</div>
+    <div class="modal-body">
+      <div class="export-options" id="exportOptions">
+        <div class="export-option selected" data-format="json" onclick="selectExportFormat('json')">
+          <div class="export-option-title">JSON</div>
+          <div class="export-option-description">结构化数据，适合备份恢复</div>
+        </div>
+        <div class="export-option" data-format="txt" onclick="selectExportFormat('txt')">
+          <div class="export-option-title">TXT</div>
+          <div class="export-option-description">纯文本格式，逐行罗列</div>
+        </div>
+      </div>
+      <div class="file-input-wrap" id="importFileWrap" style="display:none">
+        <input type="file" id="importFile" accept=".json" onchange="handleFileImport(this)">
+        <button class="btn btn-secondary" onclick="document.getElementById('importFile').click()">上传文件</button>
+      </div>
+      <textarea class="json-area" id="jsonArea" placeholder=""></textarea>
+      <div class="hint" id="modalHint">点击下方按钮直接保存到本地，或复制文本手动保存。</div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal()">关闭</button>
+      <button class="btn btn-primary" id="btnDownload" onclick="downloadExport()">下载文件</button>
+      <button class="btn btn-primary" id="modalAction" onclick="confirmImport()">确认导入</button>
+    </div>
+  </div>
+</div>
