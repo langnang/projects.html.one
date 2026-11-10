@@ -1,5 +1,6 @@
 {
   "oneexam": {
+    "metas": {},
     "contents": [
       {
         "id": "1794082872233_bvznm",
@@ -109,6 +110,9 @@
           "解析"
         ]
       }
-    ]
+    ],
+    "links": {},
+    "files": {},
+    "relationships": []
   }
 }
